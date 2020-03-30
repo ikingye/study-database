@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="String 实现"><meta property="og:title" content="String 实现" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ikingye.github.io/study-database/docs/redis/source/type/string/" />
+
+<title>String 实现 | 数据库学习笔记</title>
+<link rel="icon" href="/study-database/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/study-database/book.min.33dd7934182d4abfe269db67d0d9821bdd866c149d8327944bc47573db5a4d82.css" integrity="sha256-M915NBgtSr/iadtn0NmCG92GbBSdgyeUS8R1c9taTYI=">
+
+
+<script defer src="/study-database/en.search.min.3944ac34fa7a9320db240de8a6df922a70f3a4a8d556f498ac9d2bb769997efe.js" integrity="sha256-OUSsNPp6kyDbJA3opt&#43;SKnDzpKjVVvSYrJ0rt2mZfv4="></script>
+
+<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-database/docs/redis/source/type/string/index.xml" title="数据库学习笔记" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/study-database"><span>数据库学习笔记</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/mysql/" >
+      Mysql
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/postgresql/" >
+      PostgreSQL
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/" >
+      Redis
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      <span>第一部分 基础入门</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/basic/type/" >
+      数据类型
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/basic/cmd/" >
+      命令
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/basic/practice/" >
+      最佳实践
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/basic/practice/spec/" >
+      编程规范
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/basic/practice/snippet/" >
+      代码片段
+  </a>
+
+
+    
+
+    
+
+
+
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第二部分 设计</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第三部分 源码实现</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/source/type/" >
+      类型实现
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/source/type/string/"  class="active">
+      String 实现
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/source/type/list/" >
+      List 实现
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      <span>第四部分 附录</span>
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/appendix/tutorial/" >
+      教程
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/study-database/docs/redis/appendix/interview/" >
+      面试题
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/study-database/docs/redis/appendix/interview/basic/" >
+      基础
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-database/docs/redis/appendix/interview/advanced/" >
+      进阶
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/study-database/docs/redis/appendix/interview/expert/" >
+      高阶
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/study-database/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>String 实现</strong>
+
+  <label for="toc-control">
+    <img src="/study-database/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-string-">Redis String 类型实现</a>
+      <ul>
+        <li><a href="#sds--c-">SDS 与 C 字符串的区别</a>
+          <ul>
+            <li><a href="#c-">C 字符串太简单</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown"><h1 id="redis-string-">Redis String 类型实现</h1>
+<p>Redis 中的字符串是一种 动态字符串，这意味着使用者可以修改，它的底层实现有点类似于 Java 中的 ArrayList，有一个字符数组，从源码的 sds.h/sdshdr 文件 中可以看到 Redis 底层对于字符串的定义 SDS，即 Simple Dynamic String 结构：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* Note: sdshdr5 is never used, we just access the flags byte directly.
+</span><span style="color:#75715e"> * However is here to document the layout of type 5 SDS strings. */</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__attribute__</span> ((__packed__)) sdshdr5 {
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> flags; <span style="color:#75715e">/* 3 lsb of type, and 5 msb of string length */</span>
+    <span style="color:#66d9ef">char</span> buf[];
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__attribute__</span> ((__packed__)) sdshdr8 {
+    uint8_t len; <span style="color:#75715e">/* used */</span>
+    uint8_t alloc; <span style="color:#75715e">/* excluding the header and null terminator */</span>
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> flags; <span style="color:#75715e">/* 3 lsb of type, 5 unused bits */</span>
+    <span style="color:#66d9ef">char</span> buf[];
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__attribute__</span> ((__packed__)) sdshdr16 {
+    uint16_t len; <span style="color:#75715e">/* used */</span>
+    uint16_t alloc; <span style="color:#75715e">/* excluding the header and null terminator */</span>
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> flags; <span style="color:#75715e">/* 3 lsb of type, 5 unused bits */</span>
+    <span style="color:#66d9ef">char</span> buf[];
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__attribute__</span> ((__packed__)) sdshdr32 {
+    uint32_t len; <span style="color:#75715e">/* used */</span>
+    uint32_t alloc; <span style="color:#75715e">/* excluding the header and null terminator */</span>
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> flags; <span style="color:#75715e">/* 3 lsb of type, 5 unused bits */</span>
+    <span style="color:#66d9ef">char</span> buf[];
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__attribute__</span> ((__packed__)) sdshdr64 {
+    uint64_t len; <span style="color:#75715e">/* used */</span>
+    uint64_t alloc; <span style="color:#75715e">/* excluding the header and null terminator */</span>
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> flags; <span style="color:#75715e">/* 3 lsb of type, 5 unused bits */</span>
+    <span style="color:#66d9ef">char</span> buf[];
+};
+</code></pre></div><p>你会发现同样一组结构 Redis 使用泛型定义了好多次，为什么不直接使用 int 类型呢？</p>
+<p>因为当字符串比较短的时候，len 和 alloc 可以使用 byte 和 short 来表示，Redis 为了对内存做极致的优化，不同长度的字符串使用不同的结构体来表示。</p>
+<h2 id="sds--c-">SDS 与 C 字符串的区别</h2>
+<p>为什么不考虑直接使用 C 语言的字符串呢？</p>
+<h3 id="c-">C 字符串太简单</h3>
+<p>因为 C 语言这种简单的字符串表示方式 不符合 Redis 对字符串在安全性、效率以及功能方面的要求。</p>
+<p>C 语言使用了一个长度为 N+1 的字符数组来表示长度为 N 的字符串，并且字符数组最后一个元素总是 &lsquo;\0&rsquo;。</p>
+<p>这样简单的数据结构可能会造成以下一些问题：</p>
+<ul>
+<li>获取字符串长度为 O (N) 级别的操作 → 因为 C 不保存数组的长度，每次都需要遍历一遍整个数组；</li>
+<li>不能很好的杜绝 缓冲区溢出 / 内存泄漏 的问题 → 跟上述问题原因一样，如果执行拼接 or 缩短字符串的操作，如果操作不当就很容易造成上述问题；</li>
+<li>C 字符串 只能保存文本数据 → 因为 C 语言中的字符串必须符合某种编码（比如 ASCII），例如中间出现的 &lsquo;\0&rsquo; 可能会被判定为提前结束的字符串而识别不了；</li>
+</ul>
+<p>以追加字符串的操作举例，Redis 源码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* Append the specified binary-safe string pointed by &#39;t&#39; of &#39;len&#39; bytes to the
+</span><span style="color:#75715e"> * end of the specified sds string &#39;s&#39;.
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * After the call, the passed sds string is no longer valid and all the
+</span><span style="color:#75715e"> * references must be substituted with the new pointer returned by the call. */</span>
+sds <span style="color:#a6e22e">sdscatlen</span>(sds s, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>t, size_t len) {
+    <span style="color:#75715e">// 获取原字符串的长度
+</span><span style="color:#75715e"></span>    size_t curlen <span style="color:#f92672">=</span> sdslen(s);
+
+    <span style="color:#75715e">// 按需调整空间，如果容量不够容纳追加的内容，就会重新分配字节数组并复制原字符串的内容到新数组中
+</span><span style="color:#75715e"></span>    s <span style="color:#f92672">=</span> sdsMakeRoomFor(s,len);
+    <span style="color:#66d9ef">if</span> (s <span style="color:#f92672">=</span><span style="color:#f92672">=</span> NULL) <span style="color:#66d9ef">return</span> NULL;   <span style="color:#75715e">// 内存不足
+</span><span style="color:#75715e"></span>    memcpy(s<span style="color:#f92672">+</span>curlen, t, len);     <span style="color:#75715e">// 追加目标字符串到字节数组中
+</span><span style="color:#75715e"></span>    sdssetlen(s, curlen<span style="color:#f92672">+</span>len);     <span style="color:#75715e">// 设置追加后的长度
+</span><span style="color:#75715e"></span>    s[curlen<span style="color:#f92672">+</span>len] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;         <span style="color:#75715e">// 让字符串以 \0 结尾，便于调试打印
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> s;
+}
+</code></pre></div><hr>
+<h2 id="heading">参考</h2>
+<ul>
+<li><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/redis-collection/Redis(1)%E2%80%94%E2%80%945%E7%A7%8D%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.md">5 种基本数据结构</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/ikingye/note/commit/7a1451ececa779c2003c6713e965924f6966092f" title='Last modified by yewang | 2020-03-30' target="_blank" rel="noopener">
+      <img src="/study-database/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-03-30</span>
+    </a>
+  </div>
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+<script src="https://utteranc.es/client.js"
+  repo="ikingye/study-database"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+
+</div>
+  
+ 
+      </footer>
+      
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-string-">Redis String 类型实现</a>
+      <ul>
+        <li><a href="#sds--c-">SDS 与 C 字符串的区别</a>
+          <ul>
+            <li><a href="#c-">C 字符串太简单</a></li>
+          </ul>
+        </li>
+        <li><a href="#heading">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+<a href="https://github.com/ikingye/study-database" 
+class="github-corner" aria-label="View source on GitHub">
+<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+  <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+  <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+</svg></a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

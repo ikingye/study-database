@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="进阶"><meta property="og:title" content="进阶" />
-<meta property="og:description" content="进阶面试题 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://ikingye.github.io/study-database/docs/redis/appendix/interview/advanced/" />
-<meta property="article:modified_time" content="2020-03-27T14:39:27+08:00" />
-<title>进阶 | 数据库学习笔记</title>
+<meta name="description" content="命令"><meta property="og:title" content="命令" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ikingye.github.io/study-database/docs/redis/basic/cmd/" />
+
+<title>命令 | 数据库学习笔记</title>
 <link rel="icon" href="/study-database/favicon.png" type="image/x-icon">
 
 
@@ -18,6 +18,7 @@
 
 <script defer src="/study-database/en.search.min.3944ac34fa7a9320db240de8a6df922a70f3a4a8d556f498ac9d2bb769997efe.js" integrity="sha256-OUSsNPp6kyDbJA3opt&#43;SKnDzpKjVVvSYrJ0rt2mZfv4="></script>
 
+<link rel="alternate" type="application/rss+xml" href="https://ikingye.github.io/study-database/docs/redis/basic/cmd/index.xml" title="数据库学习笔记" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -202,7 +203,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/study-database/docs/redis/basic/cmd/" >
+  <a href="/study-database/docs/redis/basic/cmd/"  class="active">
       命令
   </a>
 
@@ -552,7 +553,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/study-database/docs/redis/appendix/interview/advanced/"  class="active">
+  <a href="/study-database/docs/redis/appendix/interview/advanced/" >
       进阶
   </a>
 
@@ -640,7 +641,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/study-database/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>进阶</strong>
+  <strong>命令</strong>
 
   <label for="toc-control">
     <img src="/study-database/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -654,7 +655,24 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">进阶面试题</a></li>
+    <li><a href="#redis-">Redis 命令</a>
+      <ul>
+        <li><a href="#key">key</a></li>
+        <li><a href="#string">string</a></li>
+        <li><a href="#list">list</a></li>
+        <li><a href="#hash">hash</a></li>
+        <li><a href="#set">set</a></li>
+        <li><a href="#zset">zset</a></li>
+        <li><a href="#heading">连接</a></li>
+        <li><a href="#heading-1">服务器</a></li>
+        <li><a href="#heading-2">脚本</a></li>
+        <li><a href="#heading-3">事务</a></li>
+        <li><a href="#hyperloglog">HyperLogLog</a></li>
+        <li><a href="#heading-4">发布订阅</a></li>
+        <li><a href="#-geo">地理位置 (geo)</a></li>
+        <li><a href="#heading-5">参考</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -666,7 +684,226 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown"><h1 id="heading">进阶面试题</h1>
+<article class="markdown"><h1 id="redis-">Redis 命令</h1>
+<h2 id="key">key</h2>
+<ul>
+<li>DEL</li>
+<li>DUMP</li>
+<li>EXISTS</li>
+<li>EXPIRE</li>
+<li>EXPIREAT</li>
+<li>KEYS</li>
+<li>MOVE</li>
+<li>PERSIST</li>
+<li>PEXPIREAT</li>
+<li>PEXPIREAT</li>
+<li>PTTL</li>
+<li>RANDOMKEY</li>
+<li>RENAME</li>
+<li>RENAMENX</li>
+<li>TTL</li>
+<li>TYPE</li>
+</ul>
+<hr>
+<h2 id="string">string</h2>
+<ul>
+<li>APPEND</li>
+<li>DECR</li>
+<li>DECRBY</li>
+<li>DEL</li>
+<li>EXISTS</li>
+<li>GET</li>
+<li>GETRANGE</li>
+<li>GETSET</li>
+<li>INCR</li>
+<li>INCRBY</li>
+<li>INCRBYFLOAT</li>
+<li>MGET</li>
+<li>MSET</li>
+<li>MSETNX</li>
+<li>PSETEX</li>
+<li>SET</li>
+<li>SETBIT</li>
+<li>SETEX</li>
+<li>SETNX</li>
+<li>STRLEN</li>
+</ul>
+<hr>
+<h2 id="list">list</h2>
+<ul>
+<li>DEL</li>
+<li>DUMP</li>
+<li>EXISTS</li>
+<li>EXPIRE</li>
+<li>EXPIREAT</li>
+<li>KEYS</li>
+<li>MOVE</li>
+<li>PERSIST</li>
+<li>PEXPIREAT</li>
+<li>PEXPIREAT</li>
+<li>PTTL</li>
+<li>RANDOMKEY</li>
+<li>RENAME</li>
+<li>RENAMENX</li>
+<li>TTL</li>
+<li>TYPE</li>
+</ul>
+<hr>
+<h2 id="hash">hash</h2>
+<ul>
+<li>HDEL</li>
+<li>HEXISTS</li>
+<li>HGET</li>
+<li>HGETALL</li>
+<li>HINCRBY</li>
+<li>HINCRBYFLOAT</li>
+<li>HKEYS</li>
+<li>HLEN</li>
+<li>HMGET</li>
+<li>HMSET</li>
+<li>HSET</li>
+<li>HSETNX</li>
+<li>HVALS</li>
+</ul>
+<hr>
+<h2 id="set">set</h2>
+<ul>
+<li>SADD</li>
+<li>SCARD</li>
+<li>SDIFF</li>
+<li>SDIFFSTORE</li>
+<li>SINTER</li>
+<li>SINTERSTORE</li>
+<li>SISMEMBER</li>
+<li>SMEMBERS</li>
+<li>SMOVE</li>
+<li>SPOP</li>
+<li>SRANDMEMBER</li>
+<li>SREM</li>
+<li>SSCAN</li>
+<li>SUNION</li>
+<li>SUNIONSTORE</li>
+</ul>
+<hr>
+<h2 id="zset">zset</h2>
+<ul>
+<li>ZADD</li>
+<li>ZCARD</li>
+<li>ZCOUNT</li>
+<li>ZINCRBY</li>
+<li>ZINTERSTORE</li>
+<li>ZLEXCOUNT</li>
+<li>ZRANGE</li>
+<li>ZRANGEBYLEX</li>
+<li>ZRANGEBYSCORE</li>
+<li>ZRANK</li>
+<li>ZREM</li>
+<li>ZREMRANGEBYLEX</li>
+<li>ZREMRANGEBYRANK</li>
+<li>ZREMRANGEBYSCORE</li>
+<li>ZREVRANGE</li>
+<li>ZREVRANGEBYSCORE</li>
+<li>ZREVRANK</li>
+<li>ZSCAN</li>
+<li>ZSCORE</li>
+<li>ZUNIONSTORE</li>
+</ul>
+<hr>
+<h2 id="heading">连接</h2>
+<ul>
+<li>AUTH</li>
+<li>ECHO</li>
+<li>PING</li>
+<li>QUIT</li>
+<li>SELECT</li>
+</ul>
+<hr>
+<h2 id="heading-1">服务器</h2>
+<ul>
+<li>BGREWRITEAOF</li>
+<li>BGSAVE</li>
+<li>CLIENT GETNAME</li>
+<li>CLIENT KILL</li>
+<li>CLIENT LIST</li>
+<li>CLIENT PAUSE</li>
+<li>CLIENT SETNAME</li>
+<li>CLUSTER SLOTS</li>
+<li>COMMAND</li>
+<li>COMMAND COUNT</li>
+<li>COMMAND GETKEYS</li>
+<li>COMMAND INFO</li>
+<li>CONFIG GET</li>
+<li>CONFIG RESETSTAT</li>
+<li>CONFIG REWRITE</li>
+<li>CONFIG SET</li>
+<li>DBSIZE</li>
+<li>DEBUG OBJECT</li>
+<li>DEBUG SEGFAULT</li>
+<li>FLUSHALL</li>
+<li>FLUSHDB</li>
+<li>INFO</li>
+<li>LASTSAVE</li>
+<li>MONITOR</li>
+<li>ROLE</li>
+<li>SAVE</li>
+<li>SHOWLOG</li>
+<li>SHUTDOWN</li>
+<li>SLAVEOF</li>
+<li>SYNC</li>
+<li>TIME</li>
+</ul>
+<hr>
+<h2 id="heading-2">脚本</h2>
+<ul>
+<li>EVAL</li>
+<li>EVALSHA</li>
+<li>SCRIPT EXISTS</li>
+<li>SCRIPT FLUSH</li>
+<li>SCRIPT KILL</li>
+<li>SCRIPT LOAD</li>
+</ul>
+<hr>
+<h2 id="heading-3">事务</h2>
+<ul>
+<li>DISCARD</li>
+<li>EXEC</li>
+<li>MULTI</li>
+<li>UNWATCH</li>
+<li>WATCH</li>
+</ul>
+<hr>
+<h2 id="hyperloglog">HyperLogLog</h2>
+<ul>
+<li>PFADD</li>
+<li>PFCOUNT</li>
+<li>PGMERGE</li>
+</ul>
+<hr>
+<h2 id="heading-4">发布订阅</h2>
+<ul>
+<li>PSUBSCRIBE</li>
+<li>PUBLISH</li>
+<li>PUBSUB</li>
+<li>PUNSUBSCRIBE</li>
+<li>SUBSCRIBE</li>
+<li>UNSUBSCRIBE</li>
+</ul>
+<hr>
+<h2 id="-geo">地理位置 (geo)</h2>
+<ul>
+<li>GEOADD</li>
+<li>GEODIST</li>
+<li>GEOHASH</li>
+<li>GEOPOS</li>
+<li>GEORADIUS</li>
+<li>GEORADIUSBYMEMBER</li>
+</ul>
+<hr>
+<h2 id="heading-5">参考</h2>
+<ul>
+<li><a href="https://www.redis.net.cn/order/">www.redis.net.cn/order</a></li>
+<li><a href="http://www.rainybowe.com/blog/2017/07/13/%E7%A5%9E%E5%A5%87%E7%9A%84HyperLogLog%E7%AE%97%E6%B3%95/index.html">神奇的 HyperLogLog 算法</a></li>
+</ul>
 </article>
  
       
@@ -679,9 +916,9 @@ https://github.com/alex-shpak/hugo-book
 
   <div>
     
-    <a class="flex align-center" href="https://github.com/ikingye/note/commit/dfd21cdab726e88246b6c375b717348fa942b91a" title='Last modified by yewang | 2020-03-27' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/ikingye/note/commit/7a1451ececa779c2003c6713e965924f6966092f" title='Last modified by yewang | 2020-03-30' target="_blank" rel="noopener">
       <img src="/study-database/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>2020-03-27</span>
+      <span>2020-03-30</span>
     </a>
   </div>
 
@@ -715,7 +952,24 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">进阶面试题</a></li>
+    <li><a href="#redis-">Redis 命令</a>
+      <ul>
+        <li><a href="#key">key</a></li>
+        <li><a href="#string">string</a></li>
+        <li><a href="#list">list</a></li>
+        <li><a href="#hash">hash</a></li>
+        <li><a href="#set">set</a></li>
+        <li><a href="#zset">zset</a></li>
+        <li><a href="#heading">连接</a></li>
+        <li><a href="#heading-1">服务器</a></li>
+        <li><a href="#heading-2">脚本</a></li>
+        <li><a href="#heading-3">事务</a></li>
+        <li><a href="#hyperloglog">HyperLogLog</a></li>
+        <li><a href="#heading-4">发布订阅</a></li>
+        <li><a href="#-geo">地理位置 (geo)</a></li>
+        <li><a href="#heading-5">参考</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
