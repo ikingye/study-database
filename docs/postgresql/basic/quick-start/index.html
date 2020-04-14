@@ -474,18 +474,18 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">快速上手</a>
+    <li><a href="#快速上手">快速上手</a>
       <ul>
-        <li><a href="#heading-1">安装</a>
+        <li><a href="#安装">安装</a>
           <ul>
             <li><a href="#macos">MacOS</a></li>
           </ul>
         </li>
-        <li><a href="#heading-2">基础命令</a>
+        <li><a href="#基础命令">基础命令</a>
           <ul>
-            <li><a href="#-postgresql-psql">登录 PostgreSQL 控制台：psql</a></li>
-            <li><a href="#l">\l</a></li>
-            <li><a href="#heading-3">常用控制台命令</a></li>
+            <li><a href="#登录-postgresql-控制台psql">登录 PostgreSQL 控制台：<code>psql</code></a></li>
+            <li><a href="#l"><code>\l</code></a></li>
+            <li><a href="#常用控制台命令">常用控制台命令</a></li>
           </ul>
         </li>
       </ul>
@@ -500,16 +500,16 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="heading">快速上手</h1>
-<h2 id="heading-1">安装</h2>
+<article class="markdown"><h1 id="快速上手">快速上手</h1>
+<h2 id="安装">安装</h2>
 <h3 id="macos">MacOS</h3>
 <ul>
 <li>安装：<code>brew install postgresql</code></li>
 <li>启动：<code>brew services start postgresql</code></li>
 <li>创建用户名数据库：<code>createdb</code></li>
 </ul>
-<h2 id="heading-2">基础命令</h2>
-<h3 id="-postgresql-psql">登录 PostgreSQL 控制台：<code>psql</code></h3>
+<h2 id="基础命令">基础命令</h2>
+<h3 id="登录-postgresql-控制台psql">登录 PostgreSQL 控制台：<code>psql</code></h3>
 <p><code>psql -U [user] -d [database] -h [host] -p [port]</code></p>
 <p>默认 <code>psql</code></p>
 <pre><code>user：当前mac用户
@@ -526,19 +526,19 @@ database：用户同名数据库
 <li>将数据库所有权限赋予 postgres 用户：<code>GRANT ALL PRIVILEGES ON DATABASE postgres to postgres;</code></li>
 <li>给 postgres 用户添加创建数据库的属性：<code>ALTER ROLE postgres CREATEDB;</code></li>
 </ul>
-<h3 id="heading-3">常用控制台命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#960050;background-color:#1e0010">\</span>password<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">设</span><span style="color:#960050;background-color:#1e0010">置</span><span style="color:#960050;background-color:#1e0010">当</span><span style="color:#960050;background-color:#1e0010">前</span><span style="color:#960050;background-color:#1e0010">登</span><span style="color:#960050;background-color:#1e0010">录</span><span style="color:#960050;background-color:#1e0010">用</span><span style="color:#960050;background-color:#1e0010">户</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">密</span><span style="color:#960050;background-color:#1e0010">码</span>
-<span style="color:#960050;background-color:#1e0010">\</span>h<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">查</span><span style="color:#960050;background-color:#1e0010">看</span>SQL命令的解释<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">比</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">\</span>h <span style="color:#66d9ef">select</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">查</span><span style="color:#960050;background-color:#1e0010">看</span>psql命令列表<span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>l<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">库</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> [database_name]<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">连</span><span style="color:#960050;background-color:#1e0010">接</span><span style="color:#960050;background-color:#1e0010">其</span><span style="color:#960050;background-color:#1e0010">他</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">库</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>d<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">当</span><span style="color:#960050;background-color:#1e0010">前</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">库</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">格</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>d [<span style="color:#66d9ef">table_name</span>]<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">某</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">张</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#960050;background-color:#1e0010">格</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">结</span><span style="color:#960050;background-color:#1e0010">构</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>du<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">所</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#960050;background-color:#1e0010">用</span><span style="color:#960050;background-color:#1e0010">户</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>e<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">打</span><span style="color:#960050;background-color:#1e0010">开</span><span style="color:#960050;background-color:#1e0010">文</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">编</span><span style="color:#960050;background-color:#1e0010">辑</span><span style="color:#960050;background-color:#1e0010">器</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>conninfo<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">列</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">当</span><span style="color:#960050;background-color:#1e0010">前</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">库</span><span style="color:#960050;background-color:#1e0010">和</span><span style="color:#960050;background-color:#1e0010">连</span><span style="color:#960050;background-color:#1e0010">接</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">信</span><span style="color:#960050;background-color:#1e0010">息</span><span style="color:#960050;background-color:#1e0010">。</span>
-<span style="color:#960050;background-color:#1e0010">\</span>password [<span style="color:#66d9ef">user</span>]: <span style="color:#960050;background-color:#1e0010">修</span><span style="color:#960050;background-color:#1e0010">改</span><span style="color:#960050;background-color:#1e0010">用</span><span style="color:#960050;background-color:#1e0010">户</span><span style="color:#960050;background-color:#1e0010">密</span><span style="color:#960050;background-color:#1e0010">码</span>
-<span style="color:#960050;background-color:#1e0010">\</span>q<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">退</span><span style="color:#960050;background-color:#1e0010">出</span>
+<h3 id="常用控制台命令">常用控制台命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#960050;background-color:#1e0010">\</span>password<span style="color:#960050;background-color:#1e0010">：设置当前登录用户的密码</span>
+<span style="color:#960050;background-color:#1e0010">\</span>h<span style="color:#960050;background-color:#1e0010">：查看</span>SQL命令的解释<span style="color:#960050;background-color:#1e0010">，比如\</span>h <span style="color:#66d9ef">select</span><span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">：查看</span>psql命令列表<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>l<span style="color:#960050;background-color:#1e0010">：列出所有数据库。</span>
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> [database_name]<span style="color:#960050;background-color:#1e0010">：连接其他数据库。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>d<span style="color:#960050;background-color:#1e0010">：列出当前数据库的所有表格。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>d [<span style="color:#66d9ef">table_name</span>]<span style="color:#960050;background-color:#1e0010">：列出某一张表格的结构。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>du<span style="color:#960050;background-color:#1e0010">：列出所有用户。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>e<span style="color:#960050;background-color:#1e0010">：打开文本编辑器。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>conninfo<span style="color:#960050;background-color:#1e0010">：列出当前数据库和连接的信息。</span>
+<span style="color:#960050;background-color:#1e0010">\</span>password [<span style="color:#66d9ef">user</span>]: <span style="color:#960050;background-color:#1e0010">修改用户密码</span>
+<span style="color:#960050;background-color:#1e0010">\</span>q<span style="color:#960050;background-color:#1e0010">：退出</span>
 </code></pre></div></article>
  
 
@@ -584,18 +584,18 @@ database：用户同名数据库
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">快速上手</a>
+    <li><a href="#快速上手">快速上手</a>
       <ul>
-        <li><a href="#heading-1">安装</a>
+        <li><a href="#安装">安装</a>
           <ul>
             <li><a href="#macos">MacOS</a></li>
           </ul>
         </li>
-        <li><a href="#heading-2">基础命令</a>
+        <li><a href="#基础命令">基础命令</a>
           <ul>
-            <li><a href="#-postgresql-psql">登录 PostgreSQL 控制台：psql</a></li>
-            <li><a href="#l">\l</a></li>
-            <li><a href="#heading-3">常用控制台命令</a></li>
+            <li><a href="#登录-postgresql-控制台psql">登录 PostgreSQL 控制台：<code>psql</code></a></li>
+            <li><a href="#l"><code>\l</code></a></li>
+            <li><a href="#常用控制台命令">常用控制台命令</a></li>
           </ul>
         </li>
       </ul>

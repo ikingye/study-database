@@ -644,14 +644,14 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#redis-string-">Redis String 类型实现</a>
+    <li><a href="#redis-string-类型实现">Redis String 类型实现</a>
       <ul>
-        <li><a href="#sds--c-">SDS 与 C 字符串的区别</a>
+        <li><a href="#sds-与-c-字符串的区别">SDS 与 C 字符串的区别</a>
           <ul>
-            <li><a href="#c-">C 字符串太简单</a></li>
+            <li><a href="#c-字符串太简单">C 字符串太简单</a></li>
           </ul>
         </li>
-        <li><a href="#heading">参考</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
@@ -664,7 +664,7 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
-<article class="markdown"><h1 id="redis-string-">Redis String 类型实现</h1>
+<article class="markdown"><h1 id="redis-string-类型实现">Redis String 类型实现</h1>
 <p>Redis 中的字符串是一种 动态字符串，这意味着使用者可以修改，它的底层实现有点类似于 Java 中的 ArrayList，有一个字符数组，从源码的 sds.h/sdshdr 文件 中可以看到 Redis 底层对于字符串的定义 SDS，即 Simple Dynamic String 结构：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* Note: sdshdr5 is never used, we just access the flags byte directly.
 </span><span style="color:#75715e"> * However is here to document the layout of type 5 SDS strings. */</span>
@@ -698,9 +698,9 @@ https://github.com/alex-shpak/hugo-book
 };
 </code></pre></div><p>你会发现同样一组结构 Redis 使用泛型定义了好多次，为什么不直接使用 int 类型呢？</p>
 <p>因为当字符串比较短的时候，len 和 alloc 可以使用 byte 和 short 来表示，Redis 为了对内存做极致的优化，不同长度的字符串使用不同的结构体来表示。</p>
-<h2 id="sds--c-">SDS 与 C 字符串的区别</h2>
+<h2 id="sds-与-c-字符串的区别">SDS 与 C 字符串的区别</h2>
 <p>为什么不考虑直接使用 C 语言的字符串呢？</p>
-<h3 id="c-">C 字符串太简单</h3>
+<h3 id="c-字符串太简单">C 字符串太简单</h3>
 <p>因为 C 语言这种简单的字符串表示方式 不符合 Redis 对字符串在安全性、效率以及功能方面的要求。</p>
 <p>C 语言使用了一个长度为 N+1 的字符数组来表示长度为 N 的字符串，并且字符数组最后一个元素总是 &lsquo;\0&rsquo;。</p>
 <p>这样简单的数据结构可能会造成以下一些问题：</p>
@@ -721,14 +721,14 @@ sds <span style="color:#a6e22e">sdscatlen</span>(sds s, <span style="color:#66d9
 
     <span style="color:#75715e">// 按需调整空间，如果容量不够容纳追加的内容，就会重新分配字节数组并复制原字符串的内容到新数组中
 </span><span style="color:#75715e"></span>    s <span style="color:#f92672">=</span> sdsMakeRoomFor(s,len);
-    <span style="color:#66d9ef">if</span> (s <span style="color:#f92672">=</span><span style="color:#f92672">=</span> NULL) <span style="color:#66d9ef">return</span> NULL;   <span style="color:#75715e">// 内存不足
+    <span style="color:#66d9ef">if</span> (s <span style="color:#f92672">==</span> NULL) <span style="color:#66d9ef">return</span> NULL;   <span style="color:#75715e">// 内存不足
 </span><span style="color:#75715e"></span>    memcpy(s<span style="color:#f92672">+</span>curlen, t, len);     <span style="color:#75715e">// 追加目标字符串到字节数组中
 </span><span style="color:#75715e"></span>    sdssetlen(s, curlen<span style="color:#f92672">+</span>len);     <span style="color:#75715e">// 设置追加后的长度
-</span><span style="color:#75715e"></span>    s[curlen<span style="color:#f92672">+</span>len] <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>;         <span style="color:#75715e">// 让字符串以 \0 结尾，便于调试打印
+</span><span style="color:#75715e"></span>    s[curlen<span style="color:#f92672">+</span>len] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;         <span style="color:#75715e">// 让字符串以 \0 结尾，便于调试打印
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> s;
 }
 </code></pre></div><hr>
-<h2 id="heading">参考</h2>
+<h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/redis-collection/Redis(1)%E2%80%94%E2%80%945%E7%A7%8D%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.md">5 种基本数据结构</a></li>
 </ul>
@@ -777,14 +777,14 @@ sds <span style="color:#a6e22e">sdscatlen</span>(sds s, <span style="color:#66d9
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#redis-string-">Redis String 类型实现</a>
+    <li><a href="#redis-string-类型实现">Redis String 类型实现</a>
       <ul>
-        <li><a href="#sds--c-">SDS 与 C 字符串的区别</a>
+        <li><a href="#sds-与-c-字符串的区别">SDS 与 C 字符串的区别</a>
           <ul>
-            <li><a href="#c-">C 字符串太简单</a></li>
+            <li><a href="#c-字符串太简单">C 字符串太简单</a></li>
           </ul>
         </li>
-        <li><a href="#heading">参考</a></li>
+        <li><a href="#参考">参考</a></li>
       </ul>
     </li>
   </ul>
